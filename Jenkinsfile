@@ -9,13 +9,16 @@ pipeline {
         }
         stage('Compile') {
             steps {
-                 bat "mvn clean compile"
-            }
+		    withMaven(maven : 'apache-maven-3.6.1'){
+                 	bat "mvn clean compile"
+		  }}
         }
         stage('Test') {
             steps {
-		input message: 'Are you sure to proceed to next step? ', ok: 'Yes'
-               bat "mvn test"
+		    withMaven(maven : 'apache-maven-3.6.1'){
+			input message: 'Are you sure to proceed to next step? ', ok: 'Yes'
+              		 bat "mvn test"
+		    }
             }
         }
     }
