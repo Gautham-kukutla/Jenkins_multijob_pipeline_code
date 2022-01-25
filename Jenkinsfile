@@ -9,13 +9,13 @@ pipeline {
         }
         stage('Compile') {
             steps {
-                 sh "mvn clean compile"
+                 bat "mvn clean compile"
             }
         }
         stage('Test') {
             steps {
 		input message: 'Are you sure to proceed to next step? ', ok: 'Yes'
-               sh "mvn test"
+               bat "mvn test"
             }
         }
     }
