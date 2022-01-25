@@ -9,12 +9,13 @@ pipeline {
         }
         stage('Compile') {
             steps {
-		    
+		    bat "set +e"
                  	bat "mvn clean compile"
 		  }
         }
         stage('Test') {
             steps {
+		    bat "set +e"
               		 bat "mvn test"
 		    }
             
